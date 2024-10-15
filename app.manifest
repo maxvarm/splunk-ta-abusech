@@ -5,7 +5,7 @@
     "id": {
       "group": null,
       "name": "TA-abusech",
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     "author": [
       {
@@ -15,7 +15,7 @@
       }
     ],
     "releaseDate": null,
-    "description": "",
+    "description": "Collection of modular inputs to fetch data from AbuseCH MalwareBazaar, URLhaus, and ThreatFox",
     "classification": {
       "intendedAudience": null,
       "categories": [],
