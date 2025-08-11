@@ -34,7 +34,7 @@ fields = [
         )
     ), 
     field.RestField(
-        'note_about_collect_interval',
+        'tls_verify',
         required=False,
         encrypted=False,
         default=True,

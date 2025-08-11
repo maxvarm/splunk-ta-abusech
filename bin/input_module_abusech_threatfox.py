@@ -17,6 +17,9 @@ def collect_events(helper, ew):
     helper.set_log_level(loglevel)
     run_time = time.time()
 
+    api_key = helper.get_global_setting("api_key")
+    tls_verify = helper.get_arg("tls_verify")
+
     url_base = "https://threatfox-api.abuse.ch"
     url_endpoint = "/api/v1/"
     check_point_key = helper.get_input_stanza_names()
@@ -38,6 +41,7 @@ def collect_events(helper, ew):
     body["days"] = fetch_days
     body["query"] = "get_iocs"
     headers = {"Content-Type": "application/json"}
+    headers["Auth-Key"] = api_key
     url = url_base + url_endpoint
     resp = helper.send_http_request(
         url,
@@ -46,7 +50,7 @@ def collect_events(helper, ew):
         payload=json.dumps(body),
         headers=headers,
         timeout=30,
-        verify=False,
+        verify=tls_verify,
         use_proxy=is_proxy,
     )
     resp.raise_for_status()

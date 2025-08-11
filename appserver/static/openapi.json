@@ -5,7 +5,7 @@
         "version": "1.0.0",
         "description": "Add-on for AbuseCH",
         "contact": {
-            "name": "Maksym Varnakov"
+            "name": ""
         }
     },
     "servers": [
@@ -24,70 +24,6 @@
     ],
     "components": {
         "schemas": {
-            "proxy": {
-                "type": "object",
-                "properties": {
-                    "proxy_enabled": {
-                        "type": "string"
-                    },
-                    "proxy_type": {
-                        "type": "string",
-                        "enum": [
-                            "http",
-                            "socks4",
-                            "socks5"
-                        ]
-                    },
-                    "proxy_url": {
-                        "type": "string"
-                    },
-                    "proxy_port": {
-                        "type": "string"
-                    },
-                    "proxy_username": {
-                        "type": "string"
-                    },
-                    "proxy_password": {
-                        "type": "string",
-                        "format": "password"
-                    },
-                    "proxy_rdns": {
-                        "type": "string"
-                    }
-                }
-            },
-            "proxy_without_name": {
-                "type": "object",
-                "properties": {
-                    "proxy_enabled": {
-                        "type": "string"
-                    },
-                    "proxy_type": {
-                        "type": "string",
-                        "enum": [
-                            "http",
-                            "socks4",
-                            "socks5"
-                        ]
-                    },
-                    "proxy_url": {
-                        "type": "string"
-                    },
-                    "proxy_port": {
-                        "type": "string"
-                    },
-                    "proxy_username": {
-                        "type": "string"
-                    },
-                    "proxy_password": {
-                        "type": "string",
-                        "format": "password"
-                    },
-                    "proxy_rdns": {
-                        "type": "string"
-                    }
-                }
-            },
             "logging": {
                 "type": "object",
                 "properties": {
@@ -118,6 +54,24 @@
                     }
                 }
             },
+            "additional_parameters": {
+                "type": "object",
+                "properties": {
+                    "api_key": {
+                        "type": "string",
+                        "format": "password"
+                    }
+                }
+            },
+            "additional_parameters_without_name": {
+                "type": "object",
+                "properties": {
+                    "api_key": {
+                        "type": "string",
+                        "format": "password"
+                    }
+                }
+            },
             "abusech_urlhausurl": {
                 "type": "object",
                 "properties": {
@@ -130,7 +84,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "verify_tls": {
                         "type": "string"
                     },
                     "disabled": {
@@ -151,7 +105,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "verify_tls": {
                         "type": "string"
                     },
                     "disabled": {
@@ -175,7 +129,69 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "verify_tls": {
+                        "type": "string"
+                    }
+                }
+            },
+            "abusech_urlhaus_payload": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "interval": {
+                        "type": "string"
+                    },
+                    "index": {
+                        "type": "string"
+                    },
+                    "verify_tls": {
+                        "type": "string"
+                    },
+                    "disabled": {
+                        "type": "string",
+                        "enum": [
+                            "False",
+                            "True"
+                        ]
+                    }
+                }
+            },
+            "abusech_urlhaus_payload_without_name": {
+                "type": "object",
+                "properties": {
+                    "interval": {
+                        "type": "string"
+                    },
+                    "index": {
+                        "type": "string"
+                    },
+                    "verify_tls": {
+                        "type": "string"
+                    },
+                    "disabled": {
+                        "type": "string",
+                        "enum": [
+                            "False",
+                            "True"
+                        ]
+                    }
+                }
+            },
+            "abusech_urlhaus_payload_without_disabled": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "interval": {
+                        "type": "string"
+                    },
+                    "index": {
+                        "type": "string"
+                    },
+                    "verify_tls": {
                         "type": "string"
                     }
                 }
@@ -192,7 +208,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "tls_verify": {
                         "type": "string"
                     },
                     "disabled": {
@@ -213,7 +229,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "tls_verify": {
                         "type": "string"
                     },
                     "disabled": {
@@ -237,69 +253,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
-                        "type": "string"
-                    }
-                }
-            },
-            "abusech_urlhauspayload": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "interval": {
-                        "type": "string"
-                    },
-                    "index": {
-                        "type": "string"
-                    },
-                    "note_about_collect_interval": {
-                        "type": "string"
-                    },
-                    "disabled": {
-                        "type": "string",
-                        "enum": [
-                            "False",
-                            "True"
-                        ]
-                    }
-                }
-            },
-            "abusech_urlhauspayload_without_name": {
-                "type": "object",
-                "properties": {
-                    "interval": {
-                        "type": "string"
-                    },
-                    "index": {
-                        "type": "string"
-                    },
-                    "note_about_collect_interval": {
-                        "type": "string"
-                    },
-                    "disabled": {
-                        "type": "string",
-                        "enum": [
-                            "False",
-                            "True"
-                        ]
-                    }
-                }
-            },
-            "abusech_urlhauspayload_without_disabled": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "interval": {
-                        "type": "string"
-                    },
-                    "index": {
-                        "type": "string"
-                    },
-                    "note_about_collect_interval": {
+                    "tls_verify": {
                         "type": "string"
                     }
                 }
@@ -316,7 +270,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "verify_tls": {
                         "type": "string"
                     },
                     "disabled": {
@@ -337,7 +291,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "verify_tls": {
                         "type": "string"
                     },
                     "disabled": {
@@ -361,7 +315,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "note_about_collect_interval": {
+                    "verify_tls": {
                         "type": "string"
                     }
                 }
@@ -375,97 +329,6 @@
         }
     },
     "paths": {
-        "/TA_abusech_settings/proxy": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Get list of items for proxy",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/proxy_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Get list of items for proxy",
-                "deprecated": false
-            },
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Create item in proxy",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/proxy_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Create item in proxy",
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "$ref": "#/components/schemas/proxy"
-                            }
-                        }
-                    },
-                    "required": false
-                },
-                "deprecated": false
-            },
-            "parameters": [
-                {
-                    "name": "output_mode",
-                    "in": "query",
-                    "required": true,
-                    "description": "Output mode",
-                    "schema": {
-                        "type": "string",
-                        "enum": [
-                            "json"
-                        ],
-                        "default": "json"
-                    }
-                }
-            ]
-        },
         "/TA_abusech_settings/logging": {
             "get": {
                 "responses": {
@@ -534,6 +397,97 @@
                         "application/x-www-form-urlencoded": {
                             "schema": {
                                 "$ref": "#/components/schemas/logging"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "deprecated": false
+            },
+            "parameters": [
+                {
+                    "name": "output_mode",
+                    "in": "query",
+                    "required": true,
+                    "description": "Output mode",
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "default": "json"
+                    }
+                }
+            ]
+        },
+        "/TA_abusech_settings/additional_parameters": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get list of items for additional_parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/additional_parameters_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Get list of items for additional_parameters",
+                "deprecated": false
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Create item in additional_parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/additional_parameters_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Create item in additional_parameters",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/additional_parameters"
                             }
                         }
                     },
@@ -780,6 +734,229 @@
                 }
             ]
         },
+        "/TA_abusech_abusech_urlhaus_payload": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get list of items for abusech_urlhaus_payload",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/abusech_urlhaus_payload_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Get list of items for abusech_urlhaus_payload",
+                "deprecated": false
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Create item in abusech_urlhaus_payload",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/abusech_urlhaus_payload_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Create item in abusech_urlhaus_payload",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/abusech_urlhaus_payload_without_disabled"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "deprecated": false
+            },
+            "parameters": [
+                {
+                    "name": "output_mode",
+                    "in": "query",
+                    "required": true,
+                    "description": "Output mode",
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "default": "json"
+                    }
+                }
+            ]
+        },
+        "/TA_abusech_abusech_urlhaus_payload/{name}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get abusech_urlhaus_payload item details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/abusech_urlhaus_payload_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Get abusech_urlhaus_payload item details",
+                "deprecated": false
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Update abusech_urlhaus_payload item",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/abusech_urlhaus_payload_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Update abusech_urlhaus_payload item",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/abusech_urlhaus_payload_without_name"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Delete abusech_urlhaus_payload item",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/abusech_urlhaus_payload_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Delete abusech_urlhaus_payload item",
+                "deprecated": false
+            },
+            "parameters": [
+                {
+                    "name": "name",
+                    "in": "path",
+                    "required": true,
+                    "description": "The name of the item to operate on",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "output_mode",
+                    "in": "query",
+                    "required": true,
+                    "description": "Output mode",
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "default": "json"
+                    }
+                }
+            ]
+        },
         "/TA_abusech_abusech_threatfox": {
             "get": {
                 "responses": {
@@ -976,229 +1153,6 @@
                     }
                 },
                 "description": "Delete abusech_threatfox item",
-                "deprecated": false
-            },
-            "parameters": [
-                {
-                    "name": "name",
-                    "in": "path",
-                    "required": true,
-                    "description": "The name of the item to operate on",
-                    "schema": {
-                        "type": "string"
-                    }
-                },
-                {
-                    "name": "output_mode",
-                    "in": "query",
-                    "required": true,
-                    "description": "Output mode",
-                    "schema": {
-                        "type": "string",
-                        "enum": [
-                            "json"
-                        ],
-                        "default": "json"
-                    }
-                }
-            ]
-        },
-        "/TA_abusech_abusech_urlhauspayload": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Get list of items for abusech_urlhauspayload",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/abusech_urlhauspayload_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Get list of items for abusech_urlhauspayload",
-                "deprecated": false
-            },
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Create item in abusech_urlhauspayload",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/abusech_urlhauspayload_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Create item in abusech_urlhauspayload",
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "$ref": "#/components/schemas/abusech_urlhauspayload_without_disabled"
-                            }
-                        }
-                    },
-                    "required": false
-                },
-                "deprecated": false
-            },
-            "parameters": [
-                {
-                    "name": "output_mode",
-                    "in": "query",
-                    "required": true,
-                    "description": "Output mode",
-                    "schema": {
-                        "type": "string",
-                        "enum": [
-                            "json"
-                        ],
-                        "default": "json"
-                    }
-                }
-            ]
-        },
-        "/TA_abusech_abusech_urlhauspayload/{name}": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Get abusech_urlhauspayload item details",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/abusech_urlhauspayload_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Get abusech_urlhauspayload item details",
-                "deprecated": false
-            },
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Update abusech_urlhauspayload item",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/abusech_urlhauspayload_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Update abusech_urlhauspayload item",
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "$ref": "#/components/schemas/abusech_urlhauspayload_without_name"
-                            }
-                        }
-                    },
-                    "required": false
-                },
-                "deprecated": false
-            },
-            "delete": {
-                "responses": {
-                    "200": {
-                        "description": "Delete abusech_urlhauspayload item",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/abusech_urlhauspayload_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Delete abusech_urlhauspayload item",
                 "deprecated": false
             },
             "parameters": [

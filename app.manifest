@@ -5,17 +5,17 @@
     "id": {
       "group": null,
       "name": "TA-abusech",
-      "version": "1.0.1"
+      "version": "1.1.0"
     },
     "author": [
       {
-        "name": "Maksym Varnakov",
+        "name": "",
         "email": null,
         "company": null
       }
     ],
     "releaseDate": null,
-    "description": "Collection of modular inputs to fetch data from AbuseCH MalwareBazaar, URLhaus, and ThreatFox",
+    "description": "Collection of modular inputs to fetch data from AbuseCH MalwareBazaar, URLhaus, and ThreatFox.",
     "classification": {
       "intendedAudience": null,
       "categories": [],

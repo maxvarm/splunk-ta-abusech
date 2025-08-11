@@ -33,7 +33,7 @@ class ModInputabusech_urlhausurl(modinput_wrapper.base_modinput.BaseModInput):
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
         scheme = super(ModInputabusech_urlhausurl, self).get_scheme()
-        scheme.title = ("AbuseCH URLhaus URLs")
+        scheme.title = ("AbuseCH URLhaus (URL)")
         scheme.description = ("Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu.")
         scheme.use_external_validation = True
         scheme.streaming_mode_xml = True
@@ -46,8 +46,8 @@ class ModInputabusech_urlhausurl(modinput_wrapper.base_modinput.BaseModInput):
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("note_about_collect_interval", title="Note about Collect Interval",
-                                         description="Collect interval should be more than 5 minutes to avoid IP block but less than 3 days due to API limitations",
+        scheme.add_argument(smi.Argument("verify_tls", title="Verify TLS",
+                                         description="",
                                          required_on_create=False,
                                          required_on_edit=False))
         return scheme
@@ -69,7 +69,7 @@ class ModInputabusech_urlhausurl(modinput_wrapper.base_modinput.BaseModInput):
 
     def get_checkbox_fields(self):
         checkbox_fields = []
-        checkbox_fields.append("note_about_collect_interval")
+        checkbox_fields.append("verify_tls")
         return checkbox_fields
 
     def get_global_checkbox_fields(self):

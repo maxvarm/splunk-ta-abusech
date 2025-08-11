@@ -16,7 +16,10 @@ def collect_events(helper, ew):
     loglevel = helper.get_log_level()
     helper.set_log_level(loglevel)
     run_time = time.time()
-
+    
+    api_key = helper.get_global_setting("api_key")
+    tls_verify = helper.get_arg("tls_verify")
+    
     url_base = "https://urlhaus-api.abuse.ch"
     url_endpoint = "/v1/urls/recent/"
     check_point_key = helper.get_input_stanza_names()
@@ -35,14 +38,15 @@ def collect_events(helper, ew):
         helper.log_info(f"Fetching URLhaus URLs since {start_time} UTC")
 
     url = url_base + url_endpoint
+    headers = {"Auth-Key": api_key}
     resp = helper.send_http_request(
         url,
         "GET",
         parameters=None,
         payload=None,
-        headers=None,
+        headers=headers,
         timeout=30,
-        verify=False,
+        verify=tls_verify,
         use_proxy=is_proxy,
     )
     resp.raise_for_status()
